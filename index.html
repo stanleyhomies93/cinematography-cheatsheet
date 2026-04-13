@@ -839,7 +839,7 @@
     </div>
     <div class="section-desc">Same scene — only the camera stabilization changes. This defines the physical "feel" of the footage. 🎥 Video clips.</div>
     <div class="image-grid grid-4">
-      <div class="image-card">
+      <div class="image-card" onclick="openLightbox(this)">
         <video src="7A_Stabilization/A_tripod_static.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Locked Off / Tripod</div>
@@ -847,7 +847,7 @@
           <span class="card-tag tag-genre">🎥 tripod</span>
         </div>
       </div>
-      <div class="image-card">
+      <div class="image-card" onclick="openLightbox(this)">
         <video src="7A_Stabilization/B_handheld.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Handheld</div>
@@ -855,7 +855,7 @@
           <span class="card-tag tag-genre">🎥 handheld</span>
         </div>
       </div>
-      <div class="image-card">
+      <div class="image-card" onclick="openLightbox(this)">
         <video src="7A_Stabilization/C_steadicam.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Steadicam</div>
@@ -863,7 +863,7 @@
           <span class="card-tag tag-genre">🎥 steadicam</span>
         </div>
       </div>
-      <div class="image-card">
+      <div class="image-card" onclick="openLightbox(this)">
         <video src="7A_Stabilization/D_gimbal.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Gimbal Stabilized</div>
@@ -882,7 +882,7 @@
     </div>
     <div class="section-desc">Same subject — only the camera's movement direction changes. This is the core of video cinematography. 🎥 Video clips.</div>
     <div class="image-grid grid-4" id="grid-movement-direction">
-      <div class="image-card">
+      <div class="image-card" onclick="openLightbox(this)">
         <video src="7B_Movement_Direction/A_dolly_in.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Push In / Dolly In</div>
@@ -890,7 +890,7 @@
           <span class="card-tag tag-genre">🎥 dolly in</span>
         </div>
       </div>
-      <div class="image-card">
+      <div class="image-card" onclick="openLightbox(this)">
         <video src="7B_Movement_Direction/B_dolly_out.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Pull Out / Dolly Out</div>
@@ -898,7 +898,7 @@
           <span class="card-tag tag-genre">🎥 dolly out</span>
         </div>
       </div>
-      <div class="image-card">
+      <div class="image-card" onclick="openLightbox(this)">
         <video src="7B_Movement_Direction/C_tracking_lateral.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Tracking Left/Right</div>
@@ -906,7 +906,7 @@
           <span class="card-tag tag-genre">🎥 tracking</span>
         </div>
       </div>
-      <div class="image-card">
+      <div class="image-card" onclick="openLightbox(this)">
         <video src="7B_Movement_Direction/D_tracking_backward.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Tracking Backward</div>
@@ -914,7 +914,7 @@
           <span class="card-tag tag-genre">🎥 track backward</span>
         </div>
       </div>
-      <div class="image-card">
+      <div class="image-card" onclick="openLightbox(this)">
         <video src="7B_Movement_Direction/E_crane_up.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Crane Up</div>
@@ -922,7 +922,7 @@
           <span class="card-tag tag-genre">🎥 crane up</span>
         </div>
       </div>
-      <div class="image-card">
+      <div class="image-card" onclick="openLightbox(this)">
         <video src="7B_Movement_Direction/F_orbit.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Orbit / Arc</div>
@@ -930,7 +930,7 @@
           <span class="card-tag tag-genre">🎥 orbit</span>
         </div>
       </div>
-      <div class="image-card">
+      <div class="image-card" onclick="openLightbox(this)">
         <video src="7B_Movement_Direction/G_whip_pan.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Whip Pan</div>
@@ -949,7 +949,7 @@
     </div>
     <div class="section-desc">Same movement direction — only the speed changes. Slow = tension. Fast = shock. 🎥 Video clips.</div>
     <div class="image-grid grid-3">
-      <div class="image-card">
+      <div class="image-card" onclick="openLightbox(this)">
         <video src="7C_Speed/A_slow_creep.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Slow Creep</div>
@@ -957,7 +957,7 @@
           <span class="card-tag tag-genre">🎥 slow creep</span>
         </div>
       </div>
-      <div class="image-card">
+      <div class="image-card" onclick="openLightbox(this)">
         <video src="7C_Speed/B_steady_pace.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Steady Pace</div>
@@ -965,7 +965,7 @@
           <span class="card-tag tag-genre">🎥 steady pace</span>
         </div>
       </div>
-      <div class="image-card">
+      <div class="image-card" onclick="openLightbox(this)">
         <video src="7C_Speed/C_crash_zoom.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Crash Zoom / Snap</div>
@@ -1005,6 +1005,7 @@ Shot N (Xs-Ys): [shot size], [camera angle], [subject description],
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <img id="lightbox-img" src="" alt="">
+  <video id="lightbox-vid" src="" autoplay loop muted playsinline style="max-width:90vw;max-height:85vh;border-radius:8px;object-fit:contain;display:none;cursor:pointer" onclick="event.stopPropagation();this.muted=!this.muted"></video>
   <div class="lightbox-info">
     <div id="lightbox-title"></div>
     <div class="lightbox-prompt" id="lightbox-prompt"></div>
@@ -1023,16 +1024,35 @@ function showTab(tab) {
 // Lightbox
 function openLightbox(card) {
   const img = card.querySelector('img');
+  const video = card.querySelector('video');
   const title = card.querySelector('.card-title')?.textContent || '';
   const desc = card.querySelector('.card-desc')?.textContent || '';
   const tag = card.querySelector('.card-tag')?.textContent || '';
-  document.getElementById('lightbox-img').src = img.src;
+  
+  const lbImg = document.getElementById('lightbox-img');
+  const lbVid = document.getElementById('lightbox-vid');
+  
+  if (video) {
+    lbImg.style.display = 'none';
+    lbVid.style.display = 'block';
+    lbVid.src = video.src;
+    lbVid.play();
+  } else if (img) {
+    lbVid.style.display = 'none';
+    lbVid.src = '';
+    lbImg.style.display = 'block';
+    lbImg.src = img.src;
+  }
+  
   document.getElementById('lightbox-title').textContent = title;
   document.getElementById('lightbox-prompt').textContent = desc + ' | ' + tag;
   document.getElementById('lightbox').classList.add('show');
 }
 function closeLightbox() {
   document.getElementById('lightbox').classList.remove('show');
+  const lbVid = document.getElementById('lightbox-vid');
+  lbVid.pause();
+  lbVid.src = '';
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
