@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cinematography AI Prompt Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+  
+  :root {
+    --bg: #0a0a0f;
+    --card: #12121a;
+    --card-hover: #1a1a28;
+    --border: #1e1e2e;
+    --text: #e4e4ef;
+    --text-dim: #7a7a8e;
+    --accent: #6366f1;
+    --accent-glow: rgba(99, 102, 241, 0.15);
+    --green: #22c55e;
+    --amber: #f59e0b;
+    --rose: #f43f5e;
+    --cyan: #06b6d4;
+    --purple: #a855f7;
+    --pink: #ec4899;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 80px 20px 60px;
+    background: linear-gradient(180deg, rgba(99,102,241,0.08) 0%, transparent 100%);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #e4e4ef 0%, #6366f1 50%, #a855f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+  .hero-stat {
+    text-align: center;
+  }
+  .hero-stat .num {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+  }
+  .hero-stat .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+  }
+
+  /* Navigation */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 20px;
+    overflow-x: auto;
+  }
+  .nav-inner {
+    display: flex;
+    gap: 4px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8px 0;
+  }
+  .nav-btn {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    color: var(--text-dim);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .nav-btn:hover { background: var(--card); color: var(--text); }
+  .nav-btn.active { background: var(--accent); color: white; }
+
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  /* Tabs */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Comparison Section */
+  .comparison-section {
+    margin: 40px 0;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .section-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  .section-desc {
+    color: var(--text-dim);
+    font-size: 14px;
+    margin-bottom: 24px;
+    padding-left: 52px;
+  }
+
+  /* Image Grid */
+  .image-grid {
+    display: grid;
+    gap: 16px;
+  }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .grid-5 { grid-template-columns: repeat(5, 1fr); }
+  
+  @media (max-width: 900px) {
+    .grid-4, .grid-5 { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .grid-2, .grid-3, .grid-4, .grid-5 { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .image-card {
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--card);
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .image-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15);
+  }
+  .image-card img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+  }
+  .image-card .card-info {
+    padding: 12px 14px;
+  }
+  .image-card .card-title {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .image-card .card-desc {
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 1.4;
+  }
+  .image-card .card-tag {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Cheatsheet Reference Tab */
+  .ref-category {
+    margin: 32px 0;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .ref-category-header {
+    padding: 20px 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.2s;
+  }
+  .ref-category-header:hover {
+    background: var(--card-hover);
+  }
+  .ref-category-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ref-category-header .badge {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--accent-glow);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .ref-category-header .chevron {
+    font-size: 18px;
+    color: var(--text-dim);
+    transition: transform 0.3s;
+  }
+  .ref-category.open .chevron { transform: rotate(90deg); }
+  .ref-category-body {
+    display: none;
+    padding: 0 24px 24px;
+  }
+  .ref-category.open .ref-category-body { display: block; }
+  
+  .ref-param-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 20px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .ref-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .ref-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    vertical-align: top;
+  }
+  .ref-table tr:last-child td { border-bottom: none; }
+  .ref-table td:first-child {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--green);
+    white-space: nowrap;
+    width: 200px;
+  }
+  .ref-table td:last-child {
+    color: var(--text-dim);
+  }
+
+  /* Quick Copy Template */
+  .template-box {
+    margin: 40px 0;
+    padding: 24px;
+    background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(168,85,247,0.08));
+    border: 1px solid rgba(99,102,241,0.2);
+    border-radius: 16px;
+  }
+  .template-box h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--accent);
+  }
+  .template-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--text);
+    background: rgba(0,0,0,0.3);
+    padding: 16px;
+    border-radius: 8px;
+    overflow-x: auto;
+    cursor: pointer;
+    position: relative;
+  }
+  .template-code:hover::after {
+    content: 'Click to copy';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 10px;
+    padding: 2px 8px;
+    background: var(--accent);
+    color: white;
+    border-radius: 4px;
+  }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,0.92);
+    backdrop-filter: blur(20px);
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    cursor: zoom-out;
+  }
+  .lightbox.show { display: flex; }
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    border-radius: 8px;
+    object-fit: contain;
+  }
+  .lightbox-info {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .lightbox-prompt {
+    margin-top: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    max-width: 80vw;
+    cursor: text;
+  }
+
+  /* Color tags */
+  .tag-lens { background: rgba(6,182,212,0.15); color: var(--cyan); }
+  .tag-angle { background: rgba(168,85,247,0.15); color: var(--purple); }
+  .tag-light { background: rgba(245,158,11,0.15); color: var(--amber); }
+  .tag-color { background: rgba(236,72,153,0.15); color: var(--pink); }
+  .tag-genre { background: rgba(244,63,94,0.15); color: var(--rose); }
+  .tag-dir { background: rgba(34,197,94,0.15); color: var(--green); }
+
+  /* Search */
+  .search-bar {
+    margin: 24px 0;
+    position: relative;
+  }
+  .search-bar input {
+    width: 100%;
+    padding: 14px 20px 14px 44px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.2s;
+  }
+  .search-bar input:focus { border-color: var(--accent); }
+  .search-bar::before {
+    content: '🔍';
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-label">Cinematography</div>
+  <h1>AI Video Prompt<br>Cheat Sheet</h1>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">10</div><div class="label">Categories</div></div>
+    <div class="hero-stat"><div class="num">31</div><div class="label">Parameters</div></div>
+    <div class="hero-stat"><div class="num">199</div><div class="label">Values</div></div>
+    <div class="hero-stat"><div class="num">28</div><div class="label">Comparisons</div></div>
+  </div>
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showTab('comparisons')">🎬 Visual Comparisons</button>
+    <button class="nav-btn" onclick="showTab('reference')">📖 Full Reference</button>
+    <button class="nav-btn" onclick="showTab('prompts')">📋 Prompt Templates</button>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- TAB: Comparisons -->
+<div id="tab-comparisons" class="tab-content active">
+
+  <!-- SET 1: Focal Length -->
+  <div class="comparison-section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(6,182,212,0.15)">◎</div>
+      <h2>Focal Length</h2>
+    </div>
+    <div class="section-desc">Same scene, same pose — only the lens changes. Watch background compression increase and subject isolation grow.</div>
+    <div class="image-grid grid-4">
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="1_Focal_Length/A_24mm_wide.jpg" alt="24mm">
+        <div class="card-info">
+          <div class="card-title">24mm Wide</div>
+          <div class="card-desc">More environment, barrel distortion, subject feels "in the world"</div>
+          <span class="card-tag tag-lens">24mm · deep DOF</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="1_Focal_Length/B_50mm_normal.jpg" alt="50mm">
+        <div class="card-info">
+          <div class="card-title">50mm Normal</div>
+          <div class="card-desc">Natural perspective, closest to human eye, clean neutral look</div>
+          <span class="card-tag tag-lens">50mm · moderate DOF</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="1_Focal_Length/C_85mm_portrait.jpg" alt="85mm">
+        <div class="card-info">
+          <div class="card-title">85mm Portrait</div>
+          <div class="card-desc">Background softens, flattering compression, subject isolated</div>
+          <span class="card-tag tag-lens">85mm · shallow DOF</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="1_Focal_Length/D_135mm_telephoto.jpg" alt="135mm">
+        <div class="card-info">
+          <div class="card-title">135mm Telephoto</div>
+          <div class="card-desc">Heavy compression, creamy bokeh, voyeuristic/paparazzi feel</div>
+          <span class="card-tag tag-lens">135mm · very shallow DOF</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SET 2: Camera Angle -->
+  <div class="comparison-section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(168,85,247,0.15)">⟁</div>
+      <h2>Camera Angle</h2>
+    </div>
+    <div class="section-desc">Same framing, same lens — only the vertical angle changes. Controls power dynamics: low = powerful, high = vulnerable.</div>
+    <div class="image-grid grid-5">
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="2_Camera_Angle/A_worms_eye.jpg" alt="Worm's eye">
+        <div class="card-info">
+          <div class="card-title">Worm's Eye</div>
+          <div class="card-desc">Ground level looking up, extreme power</div>
+          <span class="card-tag tag-angle">worm's eye</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="2_Camera_Angle/B_low_angle.jpg" alt="Low angle">
+        <div class="card-info">
+          <div class="card-title">Low Angle</div>
+          <div class="card-desc">Subject dominant, threatening, hero shot</div>
+          <span class="card-tag tag-angle">low angle</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="2_Camera_Angle/C_eye_level.jpg" alt="Eye level">
+        <div class="card-info">
+          <div class="card-title">Eye Level</div>
+          <div class="card-desc">Neutral, documentary, equal relationship</div>
+          <span class="card-tag tag-angle">eye level</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="2_Camera_Angle/D_high_angle.jpg" alt="High angle">
+        <div class="card-info">
+          <div class="card-title">High Angle</div>
+          <div class="card-desc">Subject diminished, vulnerable, exposed</div>
+          <span class="card-tag tag-angle">high angle</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="2_Camera_Angle/E_birds_eye.jpg" alt="Bird's eye">
+        <div class="card-info">
+          <div class="card-title">Bird's Eye</div>
+          <div class="card-desc">God view, omniscient, graphic composition</div>
+          <span class="card-tag tag-angle">top-down</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SET 3: Lighting -->
+  <div class="comparison-section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(245,158,11,0.15)">◐</div>
+      <h2>Lighting Direction</h2>
+    </div>
+    <div class="section-desc">Same close-up portrait — only light source direction changes. The single biggest factor in visual mood.</div>
+    <div class="image-grid grid-5">
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="3_Lighting_Direction/A_front_lit.jpg" alt="Front lit">
+        <div class="card-info">
+          <div class="card-title">Front Lit</div>
+          <div class="card-desc">Flat, even, commercial/beauty</div>
+          <span class="card-tag tag-light">front lit</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="3_Lighting_Direction/B_rembrandt_side.jpg" alt="Rembrandt">
+        <div class="card-info">
+          <div class="card-title">Rembrandt</div>
+          <div class="card-desc">Triangle on cheek, classic dramatic portrait</div>
+          <span class="card-tag tag-light">side lit</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="3_Lighting_Direction/C_backlit_silhouette.jpg" alt="Backlit">
+        <div class="card-info">
+          <div class="card-title">Backlit</div>
+          <div class="card-desc">Silhouette, rim light, mysterious</div>
+          <span class="card-tag tag-light">backlit</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="3_Lighting_Direction/D_top_light_godfather.jpg" alt="Top light">
+        <div class="card-info">
+          <div class="card-title">Top Light</div>
+          <div class="card-desc">Godfather style, eyes in shadow, menacing</div>
+          <span class="card-tag tag-light">top light</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="3_Lighting_Direction/E_under_light_horror.jpg" alt="Under light">
+        <div class="card-info">
+          <div class="card-title">Under Light</div>
+          <div class="card-desc">Horror, unnatural upward shadows</div>
+          <span class="card-tag tag-light">under light</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SET 4: Color Grading -->
+  <div class="comparison-section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(236,72,153,0.15)">◧</div>
+      <h2>Color Grading</h2>
+    </div>
+    <div class="section-desc">Same medium shot, same scene — only the color grade changes. Completely shifts emotional tone without touching anything physical.</div>
+    <div class="image-grid grid-5">
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="4_Color_Grading/A_warm_amber.jpg" alt="Warm">
+        <div class="card-info">
+          <div class="card-title">Warm Amber</div>
+          <div class="card-desc">Nostalgic, hopeful, Spielberg golden hour</div>
+          <span class="card-tag tag-color">warm / amber</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="4_Color_Grading/B_teal_cyan.jpg" alt="Teal">
+        <div class="card-info">
+          <div class="card-title">Teal / Cyan</div>
+          <div class="card-desc">Cold, clinical, thriller tension (Fincher)</div>
+          <span class="card-tag tag-color">teal / cyan</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="4_Color_Grading/C_desaturated_gritty.jpg" alt="Desaturated">
+        <div class="card-info">
+          <div class="card-title">Desaturated</div>
+          <div class="card-desc">Gritty realism, war film aesthetic</div>
+          <span class="card-tag tag-color">desaturated</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="4_Color_Grading/D_teal_orange_blockbuster.jpg" alt="Teal & Orange">
+        <div class="card-info">
+          <div class="card-title">Teal & Orange</div>
+          <div class="card-desc">Hollywood blockbuster standard</div>
+          <span class="card-tag tag-color">teal and orange</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="4_Color_Grading/E_black_and_white.jpg" alt="B&W">
+        <div class="card-info">
+          <div class="card-title">Black & White</div>
+          <div class="card-desc">Timeless, graphic, art house</div>
+          <span class="card-tag tag-color">black and white</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SET 5: Genre -->
+  <div class="comparison-section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(244,63,94,0.15)">❖</div>
+      <h2>Genre Aesthetic</h2>
+    </div>
+    <div class="section-desc">Same character — genre keyword triggers an entire visual system. One word changes everything: lighting, color, composition, mood.</div>
+    <div class="image-grid grid-5">
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="5_Genre_Aesthetic/A_spy_thriller.jpg" alt="Spy">
+        <div class="card-info">
+          <div class="card-title">Spy Thriller</div>
+          <div class="card-desc">Cool tones, urban, anamorphic, MI4 vibe</div>
+          <span class="card-tag tag-genre">spy thriller</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="5_Genre_Aesthetic/B_film_noir.jpg" alt="Noir">
+        <div class="card-info">
+          <div class="card-title">Film Noir</div>
+          <div class="card-desc">B&W, hard shadows, rain, wet streets</div>
+          <span class="card-tag tag-genre">film noir</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="5_Genre_Aesthetic/C_cyberpunk.jpg" alt="Cyberpunk">
+        <div class="card-info">
+          <div class="card-title">Cyberpunk</div>
+          <div class="card-desc">Neon pink/blue, rain, saturated</div>
+          <span class="card-tag tag-genre">cyberpunk</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="5_Genre_Aesthetic/D_romantic_drama.jpg" alt="Romance">
+        <div class="card-info">
+          <div class="card-title">Romantic Drama</div>
+          <div class="card-desc">Golden hour, warm, soft, intimate</div>
+          <span class="card-tag tag-genre">romantic drama</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="5_Genre_Aesthetic/E_horror.jpg" alt="Horror">
+        <div class="card-info">
+          <div class="card-title">Horror</div>
+          <div class="card-desc">Wide angle, under-lit, dutch angle, dread</div>
+          <span class="card-tag tag-genre">horror</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SET 6: Directors -->
+  <div class="comparison-section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(34,197,94,0.15)">🎬</div>
+      <h2>Director Styles</h2>
+    </div>
+    <div class="section-desc">Same hotel corridor, same person — different director name triggers a completely different visual language.</div>
+    <div class="image-grid grid-4">
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="6_Director_Styles/A_kubrick.jpg" alt="Kubrick">
+        <div class="card-info">
+          <div class="card-title">Kubrick</div>
+          <div class="card-desc">Symmetry, one-point perspective, cold precision, 4:3</div>
+          <span class="card-tag tag-dir">kubrick style</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="6_Director_Styles/B_fincher.jpg" alt="Fincher">
+        <div class="card-info">
+          <div class="card-title">Fincher</div>
+          <div class="card-desc">Teal, crushed blacks, low-key, clinical</div>
+          <span class="card-tag tag-dir">fincher style</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="6_Director_Styles/C_wong_karwai.jpg" alt="Wong Kar-wai">
+        <div class="card-info">
+          <div class="card-title">Wong Kar-wai</div>
+          <div class="card-desc">Saturated neon, motion blur, romantic melancholy</div>
+          <span class="card-tag tag-dir">wong kar-wai style</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="6_Director_Styles/D_wes_anderson.jpg" alt="Wes Anderson">
+        <div class="card-info">
+          <div class="card-title">Wes Anderson</div>
+          <div class="card-desc">Centered, pastel, symmetrical, whimsical, 4:3</div>
+          <span class="card-tag tag-dir">wes anderson style</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- TAB: Reference -->
+<div id="tab-reference" class="tab-content">
+  <div class="search-bar">
+    <input type="text" id="refSearch" placeholder="Search values... (e.g. 'anamorphic', 'golden hour', 'Kubrick')" oninput="filterRef(this.value)">
+  </div>
+  <div id="refContent"></div>
+</div>
+
+<!-- TAB: Prompts -->
+<div id="tab-prompts" class="tab-content">
+  <div class="template-box">
+    <h3>🧩 Quick Copy Template</h3>
+    <div class="template-code" onclick="copyText(this)">
+[lighting], [aspect ratio], [lens type], [DOF], [color grade]
+Shot N (Xs-Ys): [shot size], [camera angle], [subject description],
+[action], [environment], [color grade], [lens], [focal length],
+[DOF], [genre aesthetic]
+    </div>
+  </div>
+  <div id="promptContent"></div>
+</div>
+
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-info">
+    <div id="lightbox-title"></div>
+    <div class="lightbox-prompt" id="lightbox-prompt"></div>
+  </div>
+</div>
+
+<script>
+// Tab switching
+function showTab(tab) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// Lightbox
+function openLightbox(card) {
+  const img = card.querySelector('img');
+  const title = card.querySelector('.card-title')?.textContent || '';
+  const desc = card.querySelector('.card-desc')?.textContent || '';
+  const tag = card.querySelector('.card-tag')?.textContent || '';
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox-title').textContent = title;
+  document.getElementById('lightbox-prompt').textContent = desc + ' | ' + tag;
+  document.getElementById('lightbox').classList.add('show');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('show');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+// Copy text
+function copyText(el) {
+  navigator.clipboard.writeText(el.textContent.trim());
+  el.style.borderColor = 'var(--green)';
+  setTimeout(() => el.style.borderColor = '', 1000);
+}
+
+// Reference data
+const refData = [
+  { icon: '◎', name: 'Lens & Optics', color: 'var(--cyan)', desc: 'Controls how the image is optically rendered', params: [
+    { name: 'Focal Length', values: [['14mm','Ultra-wide, extreme distortion, dramatic interiors'],['18mm','Wide, environmental, slight barrel distortion'],['24mm','Wide standard, documentary, landscapes'],['28mm','Street photography classic, Kubrick favorite'],['35mm','Natural perspective, closest to human eye'],['50mm','Normal lens, clean neutral look'],['58mm','Portrait-adjacent, dreamy rendering (Noctilux)'],['85mm','Portrait telephoto, flattering compression'],['100mm','Tight portrait, strong background compression'],['135mm+','Extreme compression, voyeuristic feel, paparazzi']]},
+    { name: 'Lens Type', values: [['anamorphic','Oval bokeh, horizontal flare, widescreen look'],['spherical','Standard round bokeh, neutral rendering'],['vintage / uncoated','Lower contrast, warm flares, organic'],['tilt-shift','Selective focus plane, miniature effect'],['macro','Extreme close-up capability, razor-thin DOF'],['fisheye','180° barrel distortion, skate/music video']]},
+    { name: 'Depth of Field', values: [['shallow DOF','f/1.2–2.8, subject isolated, creamy blur'],['moderate DOF','f/4–5.6, subject sharp with soft context'],['deep DOF','f/8–11, most of scene sharp'],['infinite DOF','f/16+, everything tack sharp, landscape'],['split diopter','Two focal planes sharp simultaneously, De Palma']]},
+    { name: 'Bokeh & Flare', values: [['oval bokeh','Anamorphic signature, elliptical highlights'],['circular bokeh','Spherical lens, round specular highlights'],['cat-eye bokeh','Swirly edge distortion, vintage lenses'],['horizontal lens flare','Anamorphic streak across frame'],['starburst flare','Stopped-down aperture, pointed rays']]}
+  ]},
+  { icon: '▭', name: 'Aspect Ratio & Format', color: 'var(--purple)', desc: 'Frame shape triggers genre associations', params: [
+    { name: 'Aspect Ratio', values: [['1:1','Square, Instagram, symmetric compositions'],['4:3','Classic TV/Academy, Wes Anderson, A24 dramas'],['16:9','Modern HD standard, TV, YouTube'],['1.85:1','US theatrical widescreen, comedies, dramas'],['2.00:1','Univisium, Netflix originals, modern compromise'],['2.39:1','CinemaScope, blockbusters, spy/action films'],['2.76:1','Ultra Panavision, epic scale (Hateful Eight)']]},
+    { name: 'Film Stock / Sensor', values: [['35mm film','Classic cinema grain, natural color'],['16mm film','Heavy grain, indie/documentary feel'],['8mm film','Home movie, lo-fi, nostalgic'],['digital clean','Modern, sharp, clinical (RED/ARRI)'],['IMAX 65mm','Massive resolution, Nolan-scale clarity']]}
+  ]},
+  { icon: '⟁', name: 'Camera Angle & Height', color: 'var(--amber)', desc: 'Controls power dynamics and psychology', params: [
+    { name: 'Vertical Angle', values: [["worm's eye",'Ground level looking up, extreme power'],['low angle','Below eye level, subject dominant/threatening'],['slightly low angle','Subtle hero framing, flattering'],['eye level','Neutral, documentary, equal relationship'],['slightly high angle','Subject slightly vulnerable/smaller'],['high angle','Subject diminished, powerless, exposed'],["bird's eye / top-down",'God view, omniscient, graphic compositions']]},
+    { name: 'Horizontal Angle', values: [['frontal','Direct address, confrontational, Kubrick'],['three-quarter','Most common portrait angle, natural'],['profile / side','90° side view, graphic, editorial'],['three-quarter rear','Mystery, partial concealment'],['rear / behind','Following, voyeuristic, journey'],['over-the-shoulder','POV-adjacent, dialogue standard']]},
+    { name: 'Dutch / Tilt', values: [['level horizon','Stable, neutral, standard'],['slight dutch angle','Subtle unease, tension'],['extreme dutch angle','Disorientation, horror, chaos']]}
+  ]},
+  { icon: '⊞', name: 'Shot Size & Framing', color: 'var(--green)', desc: 'How much of subject/environment is visible', params: [
+    { name: 'Shot Size', values: [['extreme wide / establishing','Tiny subject in vast environment'],['wide / full shot','Full body + surrounding environment'],['medium wide / cowboy','Knees up, western framing'],['medium shot','Waist up, conversational standard'],['medium close-up','Chest up, emotional but contextual'],['close-up','Face fills frame, intimate, emotional'],['extreme close-up','Eyes only, macro detail, intensity'],['insert shot','Object/hand detail, narrative emphasis'],['two-shot','Two subjects in frame together'],['over-the-shoulder (OTS)','Foreground shoulder/head, background subject']]},
+    { name: 'Framing Placement', values: [['centered framing','Subject dead center, Kubrick/Anderson'],['rule of thirds','Subject offset at third intersections'],['negative space','Subject small in large empty area'],['tight / no headroom','Claustrophobic, uncomfortable'],['frame within frame','Doorway, window, arch framing subject']]}
+  ]},
+  { icon: '⟿', name: 'Camera Movement', color: 'var(--rose)', desc: 'How the camera physically moves through space', params: [
+    { name: 'Stabilization Type', values: [['locked off / tripod','Static, stable, controlled'],['handheld','Organic shake, urgency, documentary'],['steadicam','Smooth floating glide, Kubrick hallways'],['gimbal stabilized','Modern ultra-smooth, YouTube/commercial'],['dolly','Tracked smooth movement, precise'],['crane / jib','Vertical sweep, reveals, epic scale']]},
+    { name: 'Movement Direction', values: [['push in / dolly in','Moving toward subject, increasing intimacy'],['pull out / dolly out','Moving away, revealing context'],['tracking left/right','Lateral following movement'],['tracking backward','Subject walks toward camera, hero walk'],['boom up / crane up','Rising vertical, reveal or triumph'],['boom down','Descending, settling, arrival'],['orbit / arc','Circling around subject, dramatic'],['whip pan','Fast horizontal blur transition'],['vertigo / dolly zoom','Zoom in + dolly out, dread']]},
+    { name: 'Speed', values: [['slow creep','Barely perceptible, tension building'],['steady pace','Matching subject walk speed'],['accelerating','Building urgency through speed increase'],['crash zoom / snap','Sudden violent movement, shock']]}
+  ]},
+  { icon: '◐', name: 'Lighting', color: 'var(--amber)', desc: 'The single biggest factor in visual tone', params: [
+    { name: 'Key Light Quality', values: [['hard light','Sharp shadows, high contrast, dramatic'],['soft light','Diffused, gentle gradients, flattering'],['overcast daylight',"Nature's softbox, even flat light"],['dappled light','Broken through trees/blinds, textured'],['practical lights only','In-scene lamps, realistic, moody']]},
+    { name: 'Light Direction', values: [['front lit','Flat, even, commercial/beauty'],['side lit / Rembrandt','Triangle on cheek, classic portrait'],['edge / rim light','Backlight outlining subject, separation'],['backlit / silhouette','Subject dark against bright background'],['top light','Overhead, Godfather eyes-in-shadow'],['under light','Horror, unnatural, campfire'],['halo / hair light','Glow around head/hair, angelic']]},
+    { name: 'Exposure & Key', values: [['high-key','Bright, minimal shadows, comedy/commercial'],['low-key','Mostly dark, dramatic pools of light, noir'],['blown-out / overexposed','Ethereal, dreamy, heavenly'],['crushed blacks','Deep shadows with no detail, stylized'],['natural exposure','Balanced, realistic, documentary']]},
+    { name: 'Time of Day', values: [['golden hour','Warm low sun, long shadows, magic'],['blue hour','Pre-dawn/post-sunset, cool ambient'],['harsh midday sun','Overhead, hard shadows, hot'],['moonlight / night','Cool blue, low light, mysterious'],['neon / artificial','Urban night, colored, cyberpunk'],['candlelight / firelight','Warm flicker, intimate, period']]}
+  ]},
+  { icon: '◧', name: 'Color & Grading', color: 'var(--pink)', desc: "Post-production color — cinema's Instagram filter", params: [
+    { name: 'Color Temperature', values: [['warm / amber','Cozy, nostalgic, golden, Spielberg'],['cool / blue','Clinical, cold, isolated, thriller'],['neutral','Balanced white, documentary, natural'],['mixed warm-cool','Warm practicals against cool ambient'],['extreme tungsten','Very orange, sodium vapor, gritty']]},
+    { name: 'Color Palette / Grade', values: [['teal and orange','Hollywood blockbuster standard, complementary'],['teal / cyan grade','Thriller, cold tension, Fincher'],['desaturated','Muted, gritty realism, war/drama'],['monochromatic','Single hue variations, stylized'],['black and white','Timeless, graphic, art house'],['pastel','Soft, dreamy, Wes Anderson, whimsical'],['saturated / vivid','Heightened reality, fantasy, pop'],['cross-processed','Shifted hues, 90s fashion, experimental'],['bleach bypass','Desaturated + high contrast, Saving Private Ryan'],['day for night','Shot in day, graded blue to simulate night']]},
+    { name: 'Film Grain / Texture', values: [['clean / no grain','Modern digital, smooth, pristine'],['fine grain','35mm subtle texture, cinematic'],['heavy grain','16mm, gritty, raw, indie'],['halation / glow','Light bleed on highlights, vintage warmth']]}
+  ]},
+  { icon: '◫', name: 'Composition & Staging', color: 'var(--cyan)', desc: 'Visual storytelling geometry', params: [
+    { name: 'Perspective & Lines', values: [['single-point perspective','One vanishing point, Kubrick hallways'],['two-point perspective','Corner view, architectural, dynamic'],['converging leading lines','Lines pull eye to focal point'],['diagonal composition','Dynamic tension, movement, energy'],['horizontal layering','Foreground/mid/background stacking']]},
+    { name: 'Depth Staging', values: [['foreground element','Object close to camera creating depth'],['deep staging','Action at multiple depth planes'],['flat staging','Everything on one plane, tableaux'],['rack focus','Shift attention between depth layers'],['silhouette foreground','Dark shape framing lit subject']]},
+    { name: 'Subject Placement', values: [['isolated subject','Character alone, emphasis on solitude'],['crowd / ensemble','Multiple subjects, social dynamics'],['symmetrical staging','Mirror-image balance, formality'],['triangular composition','Three-point grouping, classical']]}
+  ]},
+  { icon: '❖', name: 'Genre & Aesthetic', color: 'var(--rose)', desc: 'Shorthand labels triggering whole visual systems', params: [
+    { name: 'Genre Keywords', values: [['spy thriller','Cool tones, urban, tension, surveillance'],['film noir','B&W, hard shadows, rain, femme fatale'],['neo-noir','Color noir, neon, Blade Runner, Refn'],['horror','Dark, desaturated, under-lit, dread'],['sci-fi','Blue/teal, clean/gritty, futuristic'],['western','Warm amber, wide landscapes, dusty'],['romantic drama','Warm, soft, golden hour, intimate'],['war film','Desaturated, gritty, handheld, chaos'],['documentary','Natural light, handheld, raw'],['music video','Stylized, colored lighting, fast cuts'],['fashion editorial','Beauty light, graphic, high contrast'],['anime / animation','Saturated, dramatic, stylized'],['cyberpunk','Neon, rain, dark, blue-pink-purple'],['period drama','Warm, candlelit, painterly, soft']]},
+    { name: 'Director/DP Aesthetic', values: [['Kubrick style','Symmetry, one-point perspective, cold'],['Spielberg style','Warm, backlit, lens flare, wonder'],['Fincher style','Dark, desaturated teal, precise, clinical'],['Wes Anderson style','Centered, pastel, planimetric, whimsical'],['Nolan style','IMAX, practical, grounded, epic scale'],['Villeneuve style','Atmospheric, scale, Deakins lighting'],['Roger Deakins','Motivated naturalism, sculptural light'],['Lubezki style','Long takes, natural light, wide angle'],['Wong Kar-wai style','Saturated, step-printed, neon, romantic'],['Michael Mann style','Digital night, urban, blue, heat shimmer']]},
+    { name: 'Era / Movement', values: [['1970s New Hollywood','Gritty, natural, handheld'],['1980s blockbuster','Warm, high-key, anamorphic'],['1990s indie','Lo-fi, 16mm, raw, Sundance'],['2000s digital transition','Early digital, clean, Matrix green'],['modern cinematic','Hybrid digital, anamorphic, teal-orange']]}
+  ]},
+  { icon: '⌂', name: 'Production Design', color: 'var(--green)', desc: 'Physical world elements grounding the image', params: [
+    { name: 'Location Type', values: [['European city / old town','Stone, cobblestone, muted architecture'],['industrial / warehouse','Metal, concrete, gritty texture'],['narrow alley','Compressed depth, converging walls'],['neon-lit street','Asian metropolis, reflections, color'],['interior studio','Controlled lighting, clean or dressed'],['rooftop urban','Skyline backdrop, open, wind'],['forest / nature','Organic, dappled light, green'],['desert / arid','Warm, harsh, minimalist landscape'],['underwater','Blue-green, caustics, floating'],['futuristic / sci-fi set','Clean surfaces, LED panels, minimal']]},
+    { name: 'Wardrobe Cues', values: [['black leather jacket','Action, rebel, spy, urban cool'],['trench coat','Noir, spy, authority, rain'],['suit / tailored','Power, corporate, Bond'],['casual / streetwear','Relatable, urban, young'],['period costume','Historical, specific era'],['tactical / military gear','Action, operator, war']]},
+    { name: 'Texture & Material', values: [['stone / concrete wall','Hard, cold, urban, texture'],['brick / terracotta','Warm industrial, contrasts cool grade'],['glass / reflections','Modern, layered, mirror, doubles'],['metal / rust','Decay, industrial, gritty'],['wood / organic','Warm, natural, cabin, rural'],['wet surfaces / rain','Reflections, noir, atmosphere']]},
+    { name: 'Color Props / Accents', values: [['red accent object','Blood, danger, passion, draws eye'],['blue accent object','Cool, calm, contrast warm scenes'],['green accent (neon/foliage)','Nature, Matrix, sickness, alien'],['yellow / amber accent','Warmth, caution, sodium vapor']]}
+  ]}
+];
+
+// Render reference
+function renderRef() {
+  const container = document.getElementById('refContent');
+  container.innerHTML = refData.map((cat, ci) => `
+    <div class="ref-category ${ci === 0 ? 'open' : ''}" data-search="">
+      <div class="ref-category-header" onclick="this.parentElement.classList.toggle('open')">
+        <h3><span style="color:${cat.color}">${cat.icon}</span> ${cat.name} <span class="badge">${cat.params.reduce((a,p) => a+p.values.length, 0)} values</span></h3>
+        <span class="chevron">▸</span>
+      </div>
+      <div class="ref-category-body">
+        <div style="color:var(--text-dim);font-size:13px;margin-bottom:16px">${cat.desc}</div>
+        ${cat.params.map(p => `
+          <div class="ref-param-title">${p.name} (${p.values.length})</div>
+          <table class="ref-table">
+            ${p.values.map(v => `<tr data-search="${v[0].toLowerCase()} ${v[1].toLowerCase()}"><td>${v[0]}</td><td>${v[1]}</td></tr>`).join('')}
+          </table>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterRef(q) {
+  q = q.toLowerCase().trim();
+  document.querySelectorAll('.ref-table tr').forEach(tr => {
+    tr.style.display = !q || tr.dataset.search.includes(q) ? '' : 'none';
+  });
+  if (q) document.querySelectorAll('.ref-category').forEach(c => c.classList.add('open'));
+}
+
+renderRef();
+</script>
+</body>
+</html>
