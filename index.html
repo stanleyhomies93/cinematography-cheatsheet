@@ -419,7 +419,7 @@
     <div class="hero-stat"><div class="num">10</div><div class="label">Categories</div></div>
     <div class="hero-stat"><div class="num">31</div><div class="label">Parameters</div></div>
     <div class="hero-stat"><div class="num">199</div><div class="label">Values</div></div>
-    <div class="hero-stat"><div class="num">62</div><div class="label">Comparisons</div></div>
+    <div class="hero-stat"><div class="num">65</div><div class="label">Comparisons</div></div>
   </div>
 </div>
 
@@ -1073,6 +1073,41 @@
           <div class="card-title">Neon Flickering</div>
           <div class="card-desc">Colored light pulsing on face, cyberpunk</div>
           <span class="card-tag tag-lens">🎥 neon flicker</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SET 9: Transitions (Video) -->
+  <div class="comparison-section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(245,158,11,0.15)">🔄</div>
+      <h2>Transitions</h2>
+    </div>
+    <div class="section-desc">How to connect two shots in a single prompt using "Shot 1" and "Shot 2" structure. Each transition type changes the emotional feel between scenes. 🎥 Video clips.</div>
+    <div class="image-grid grid-3">
+      <div class="image-card" onclick="openLightbox(this)">
+        <video src="9_Transitions/A_hard_cut.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
+        <div class="card-info">
+          <div class="card-title">Hard Cut</div>
+          <div class="card-desc">Instant sharp scene change, no blending</div>
+          <span class="card-tag tag-light">🎥 hard cut</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <video src="9_Transitions/B_dissolve_crossfade.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
+        <div class="card-info">
+          <div class="card-title">Dissolve / Crossfade</div>
+          <div class="card-desc">Soft blend between two scenes, dreamy</div>
+          <span class="card-tag tag-light">🎥 dissolve</span>
+        </div>
+      </div>
+      <div class="image-card" onclick="openLightbox(this)">
+        <video src="9_Transitions/C_whip_pan_transition.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
+        <div class="card-info">
+          <div class="card-title">Whip Pan Transition</div>
+          <div class="card-desc">Fast blur connecting two different locations</div>
+          <span class="card-tag tag-light">🎥 whip pan</span>
         </div>
       </div>
     </div>
