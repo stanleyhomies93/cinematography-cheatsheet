@@ -429,6 +429,7 @@
     <button class="nav-btn active" onclick="showTab('comparisons')">🎬 Visual Comparisons</button>
     <button class="nav-btn" onclick="showTab('reference')">📖 Full Reference</button>
     <button class="nav-btn" onclick="showTab('prompts')">📋 Prompt Templates</button>
+    <button class="nav-btn" id="lang-toggle" onclick="toggleLang()" style="margin-left:auto;border:1px solid var(--border)">中文</button>
   </div>
 </div>
 
@@ -1221,6 +1222,286 @@ function filterRef(q) {
 }
 
 renderRef();
+
+// i18n Translation
+const translations = {
+  // Hero
+  'Cinematography': '电影摄影',
+  'AI Video Prompt': 'AI视频提示词',
+  'Cheat Sheet': '速查手册',
+  'Categories': '类别',
+  'Parameters': '参数',
+  'Values': '数值',
+  'Comparisons': '对比示例',
+  
+  // Nav
+  '🎬 Visual Comparisons': '🎬 视觉对比',
+  '📖 Full Reference': '📖 完整参考',
+  '📋 Prompt Templates': '📋 提示词模板',
+  
+  // Section titles
+  'Focal Length': '焦距',
+  'Camera Angle — Vertical': '机位角度 — 垂直',
+  'Camera Angle — Horizontal': '机位角度 — 水平',
+  'Camera Angle — Dutch / Tilt': '机位角度 — 荷兰角/倾斜',
+  'Lighting Direction': '灯光方向',
+  'Color Grading': '调色',
+  'Genre Aesthetic': '类型美学',
+  'Director Styles': '导演风格',
+  'Camera Movement — Stabilization Type': '运镜 — 稳定方式',
+  'Camera Movement — Direction': '运镜 — 方向',
+  'Camera Movement — Speed': '运镜 — 速度',
+  'Subject Motion — Character Action': '主体运动 — 角色动作',
+  'Subject Motion — Environmental': '主体运动 — 环境动态',
+  'Transitions': '转场',
+  
+  // Section descriptions
+  'Same scene, same pose — only the lens changes. Watch background compression increase and subject isolation grow.':
+    '相同场景、相同姿势 — 只改变镜头。观察背景压缩增加和主体隔离效果增强。',
+  'Same framing, same lens — only the vertical angle changes. Controls power dynamics: low = powerful, high = vulnerable.':
+    '相同构图、相同镜头 — 只改变垂直角度。控制权力关系：低角度=强大，高角度=脆弱。',
+  'Camera rotates around the subject. Changes how much of the face is revealed and the relationship between viewer and character.':
+    '摄影机绕主体旋转。改变面部露出程度以及观众与角色之间的关系。',
+  'Same shot, only the horizon tilts. Subtle tilt = unease. Extreme tilt = chaos and disorientation.':
+    '相同镜头，只改变地平线倾斜。轻微倾斜=不安。极端倾斜=混乱和迷失感。',
+  'Same close-up portrait — only light source direction changes. The single biggest factor in visual mood.':
+    '相同特写肖像 — 只改变光源方向。影响视觉氛围的最大因素。',
+  'Same medium shot, same scene — only the color grade changes. Completely shifts emotional tone without touching anything physical.':
+    '相同中景、相同场景 — 只改变调色。在不改变任何物理元素的情况下完全转变情感基调。',
+  'Same character — genre keyword triggers an entire visual system. One word changes everything: lighting, color, composition, mood.':
+    '相同角色 — 类型关键词触发整套视觉系统。一个词改变一切：灯光、色彩、构图、氛围。',
+  'Same hotel corridor, same person — different director name triggers a completely different visual language.':
+    '相同酒店走廊、相同人物 — 不同导演名字触发完全不同的视觉语言。',
+  'Same scene — only the camera stabilization changes. This defines the physical "feel" of the footage. 🎥 Video clips.':
+    '相同场景 — 只改变摄影机稳定方式。这决定了画面的物理"质感"。🎥 视频片段。',
+  'Same subject — only the camera\'s movement direction changes. This is the core of video cinematography. 🎥 Video clips.':
+    '相同主体 — 只改变摄影机运动方向。这是视频摄影的核心。🎥 视频片段。',
+  'Same movement direction — only the speed changes. Slow = tension. Fast = shock. 🎥 Video clips.':
+    '相同运动方向 — 只改变速度。慢=紧张。快=震撼。🎥 视频片段。',
+  'Same character, same environment — only what the subject does changes. This is the other half of video prompting. 🎥 Video clips.':
+    '相同角色、相同环境 — 只改变主体动作。这是视频提示词的另一半。🎥 视频片段。',
+  'Same subject standing still — only the environment moves. Adds atmosphere and life to otherwise static shots. 🎥 Video clips.':
+    '主体静止不动 — 只有环境在动。为静态画面增添氛围和生命力。🎥 视频片段。',
+  'How to connect two shots in a single prompt using "Shot 1" and "Shot 2" structure. Each transition type changes the emotional feel between scenes. 🎥 Video clips.':
+    '如何在单个提示词中用"镜头1"和"镜头2"结构连接两个镜头。每种转场类型改变场景之间的情感。🎥 视频片段。',
+
+  // Card titles - Focal Length
+  '8mm Fisheye': '8mm 鱼眼',
+  '24mm Wide': '24mm 广角',
+  '50mm Normal': '50mm 标准',
+  '85mm Portrait': '85mm 人像',
+  '135mm Telephoto': '135mm 长焦',
+  
+  // Card descriptions - Focal Length
+  '180° barrel distortion, everything curved, skate/music video': '180°桶形畸变，一切弯曲，滑板/MV风格',
+  'More environment, barrel distortion, subject feels "in the world"': '更多环境，桶形畸变，主体有"身临其境"感',
+  'Natural perspective, closest to human eye, clean neutral look': '自然透视，最接近人眼，干净中性',
+  'Background softens, flattering compression, subject isolated': '背景柔化，讨好的压缩感，主体隔离',
+  'Heavy compression, creamy bokeh, voyeuristic/paparazzi feel': '强压缩，奶油般虚化，偷窥/狗仔感',
+  
+  // Card titles - Vertical Angle
+  "Worm\'s Eye": '蛙眼视角',
+  'Low Angle': '低角度',
+  'Eye Level': '平视',
+  'High Angle': '高角度',
+  "Bird\'s Eye": '鸟瞰',
+  
+  // Card descriptions - Vertical Angle
+  'Ground level looking up, extreme power': '地面向上仰拍，极致力量感',
+  'Subject dominant, threatening, hero shot': '主体居高临下，威胁感，英雄镜头',
+  'Neutral, documentary, equal relationship': '中性，纪录片感，平等关系',
+  'Subject diminished, vulnerable, exposed': '主体渺小，脆弱，暴露感',
+  'God view, omniscient, graphic composition': '上帝视角，全知，图形化构图',
+  
+  // Card titles - Horizontal Angle
+  'Frontal': '正面',
+  'Three-Quarter': '四分之三侧面',
+  'Profile / Side': '侧面',
+  'Three-Quarter Rear': '四分之三背面',
+  'Rear / Behind': '背面',
+  'Over-the-Shoulder': '过肩',
+  
+  // Card descriptions - Horizontal
+  'Direct address, confrontational, Kubrick': '直面镜头，对抗性，库布里克风格',
+  'Most common portrait angle, natural': '最常见的肖像角度，自然',
+  '90° side view, graphic, editorial': '90°侧面，图形化，时尚编辑风',
+  'Mystery, partial concealment': '神秘感，部分遮挡',
+  'Following, voyeuristic, journey': '跟随，偷窥感，旅途',
+  'POV-adjacent, dialogue standard': '接近POV，对话标准镜头',
+  
+  // Dutch/Tilt
+  'Level Horizon': '水平地平线',
+  'Slight Dutch': '轻微荷兰角',
+  'Extreme Dutch': '极端荷兰角',
+  'Stable, neutral, standard': '稳定，中性，标准',
+  'Subtle unease, tension': '微妙不安，紧张',
+  'Disorientation, horror, chaos': '迷失方向，恐怖，混乱',
+  
+  // Lighting
+  'Front Lit': '正面光',
+  'Rembrandt': '伦勃朗光',
+  'Backlit': '逆光',
+  'Top Light': '顶光',
+  'Under Light': '底光',
+  'Flat, even, commercial/beauty': '平坦均匀，商业/美妆风',
+  'Triangle on cheek, classic dramatic portrait': '面颊三角光，经典戏剧肖像',
+  'Silhouette, rim light, mysterious': '剪影，轮廓光，神秘',
+  'Godfather style, eyes in shadow, menacing': '教父风格，眼睛在阴影中，威胁感',
+  'Horror, unnatural upward shadows': '恐怖，不自然的上升阴影',
+  
+  // Color Grading
+  'Warm Amber': '暖琥珀色',
+  'Teal / Cyan': '青色/蓝绿',
+  'Desaturated': '去饱和',
+  'Teal & Orange': '青橙色',
+  'Black & White': '黑白',
+  'Nostalgic, hopeful, Spielberg golden hour': '怀旧、希望，斯皮尔伯格黄金时刻',
+  'Cold, clinical, thriller tension (Fincher)': '冷酷、临床感，惊悚紧张（芬奇）',
+  'Gritty realism, war film aesthetic': '粗粝写实，战争片美学',
+  'Hollywood blockbuster standard': '好莱坞大片标准',
+  'Timeless, graphic, art house': '永恒，图形化，艺术片',
+  
+  // Genre
+  'Spy Thriller': '间谍惊悚',
+  'Film Noir': '黑色电影',
+  'Cyberpunk': '赛博朋克',
+  'Romantic Drama': '爱情剧',
+  'Horror': '恐怖',
+  'Cool tones, urban, anamorphic, MI4 vibe': '冷色调，城市，变形宽银幕，碟中谍风格',
+  'B&W, hard shadows, rain, wet streets': '黑白，硬阴影，雨，湿漉漉的街道',
+  'Neon pink/blue, rain, saturated': '霓虹粉/蓝，雨，高饱和',
+  'Golden hour, warm, soft, intimate': '黄金时刻，温暖，柔和，亲密',
+  'Wide angle, under-lit, dutch angle, dread': '广角，底光，荷兰角，恐惧',
+  
+  // Directors
+  'Kubrick': '库布里克',
+  'Fincher': '芬奇',
+  'Wong Kar-wai': '王家卫',
+  'Wes Anderson': '韦斯·安德森',
+  'Symmetry, one-point perspective, cold precision, 4:3': '对称，单点透视，冷酷精准，4:3',
+  'Teal, crushed blacks, low-key, clinical': '青色，压暗黑色，低调，临床感',
+  'Saturated neon, motion blur, romantic melancholy': '饱和霓虹，运动模糊，浪漫忧郁',
+  'Centered, pastel, symmetrical, whimsical, 4:3': '居中，粉彩，对称，异想天开，4:3',
+  
+  // Stabilization
+  'Locked Off / Tripod': '锁定/三脚架',
+  'Handheld': '手持',
+  'Steadicam': '斯坦尼康',
+  'Gimbal Stabilized': '稳定器',
+  'Perfectly static, zero movement, controlled': '完全静止，零运动，受控',
+  'Organic shake, urgency, documentary': '有机抖动，紧迫感，纪录片',
+  'Smooth floating glide, Kubrick hallways': '平滑浮动滑行，库布里克走廊',
+  'Ultra-smooth modern, YouTube/commercial': '超级平滑现代感，YouTube/商业',
+  
+  // Movement Direction
+  'Push In / Dolly In': '推进/推轨',
+  'Pull Out / Dolly Out': '拉远/退轨',
+  'Tracking Left/Right': '横移跟踪',
+  'Tracking Backward': '后退跟踪',
+  'Crane Up': '升降臂上升',
+  'Orbit / Arc': '环绕/弧形',
+  'Whip Pan': '甩镜',
+  'Moving toward subject, increasing intimacy': '向主体移动，增加亲密感',
+  'Moving away, revealing context': '远离，揭示环境',
+  'Lateral following movement': '横向跟随运动',
+  'Subject walks toward camera, hero walk': '主体向镜头走来，英雄步行',
+  'Rising vertical, reveal or triumph': '垂直上升，揭示或胜利',
+  'Circling around subject, dramatic': '绕主体旋转，戏剧化',
+  'Fast horizontal blur transition': '快速水平模糊转场',
+  
+  // Speed
+  'Slow Creep': '缓慢蠕动',
+  'Steady Pace': '稳定步伐',
+  'Crash Zoom / Snap': '急推/急拉',
+  'Barely perceptible, tension building': '几乎感知不到，营造紧张',
+  'Matching subject walk speed': '匹配主体行走速度',
+  'Sudden violent movement, shock': '突然剧烈运动，冲击',
+  
+  // Character Action
+  'Standing Still': '静立',
+  'Walking Toward Camera': '走向镜头',
+  'Walking Away': '走远',
+  'Turning Head': '转头',
+  'Running': '奔跑',
+  'Sitting, Subtle Gestures': '坐姿，细微动作',
+  'Minimal motion, breathing, portrait feel': '极少运动，呼吸，肖像感',
+  'Confident approach, power, presence': '自信走来，力量，存在感',
+  'Departure, mystery, leaving behind': '离开，神秘，告别',
+  'Dramatic reveal, awareness, slow turn': '戏剧性揭示，觉察，缓慢转头',
+  'Urgency, chase, action energy': '紧迫，追逐，动作能量',
+  'Calm, contemplative, intimate': '平静，沉思，亲密',
+  
+  // Environmental Motion
+  'Rain Falling': '雨落',
+  'Wind Blowing': '风吹',
+  'Crowd Moving': '人群涌动',
+  'Neon Flickering': '霓虹闪烁',
+  'Atmosphere, noir, melancholy, wet reflections': '氛围，黑色电影，忧郁，湿润反射',
+  'Dynamic, outdoor energy, hair/clothes movement': '动感，户外能量，头发/衣服飘动',
+  'Isolation in crowd, urban life, loneliness': '人群中的孤独，城市生活，寂寞',
+  'Colored light pulsing on face, cyberpunk': '彩色光在脸上跳动，赛博朋克',
+  
+  // Transitions
+  'Hard Cut': '硬切',
+  'Dissolve / Crossfade': '溶解/交叉淡化',
+  'Whip Pan Transition': '甩镜转场',
+  'Instant sharp scene change, no blending': '瞬间切换场景，无混合',
+  'Soft blend between two scenes, dreamy': '两个场景柔和混合，梦幻',
+  'Fast blur connecting two different locations': '快速模糊连接两个不同地点',
+  
+  // Reference tab
+  'Quick Copy Template': '快速复制模板',
+  'Search values...': '搜索数值...',
+};
+
+let currentLang = 'en';
+let originalTexts = new Map();
+
+function toggleLang() {
+  const btn = document.getElementById('lang-toggle');
+  if (currentLang === 'en') {
+    currentLang = 'zh';
+    btn.textContent = 'EN';
+    applyTranslations();
+  } else {
+    currentLang = 'en';
+    btn.textContent = '中文';
+    restoreOriginals();
+  }
+}
+
+function applyTranslations() {
+  // Walk all text nodes and translatable elements
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  while (walker.nextNode()) {
+    const node = walker.currentNode;
+    const text = node.textContent.trim();
+    if (text && translations[text]) {
+      if (!originalTexts.has(node)) originalTexts.set(node, node.textContent);
+      node.textContent = node.textContent.replace(text, translations[text]);
+    }
+  }
+  // Translate placeholders
+  document.querySelectorAll('input[placeholder]').forEach(el => {
+    const ph = el.placeholder;
+    if (translations[ph]) {
+      if (!originalTexts.has(el)) originalTexts.set(el, ph);
+      el.placeholder = translations[ph];
+    }
+  });
+}
+
+function restoreOriginals() {
+  originalTexts.forEach((original, node) => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      node.textContent = original;
+    } else if (node.placeholder !== undefined) {
+      node.placeholder = original;
+    }
+  });
+  originalTexts.clear();
+}
+
 
 // Lazy load videos - only load when scrolled into view
 if ('IntersectionObserver' in window) {
