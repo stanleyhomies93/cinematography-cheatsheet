@@ -444,7 +444,15 @@
       <h2>Focal Length</h2>
     </div>
     <div class="section-desc">Same scene, same pose — only the lens changes. Watch background compression increase and subject isolation grow.</div>
-    <div class="image-grid grid-4">
+    <div class="image-grid grid-5">
+      <div class="image-card" onclick="openLightbox(this)">
+        <img src="1_Focal_Length/E_8mm_fisheye.jpg" alt="8mm">
+        <div class="card-info">
+          <div class="card-title">8mm Fisheye</div>
+          <div class="card-desc">180° barrel distortion, everything curved, skate/music video</div>
+          <span class="card-tag tag-lens">8mm · fisheye</span>
+        </div>
+      </div>
       <div class="image-card" onclick="openLightbox(this)">
         <img src="1_Focal_Length/A_24mm_wide.jpg" alt="24mm">
         <div class="card-info">
@@ -797,7 +805,7 @@ function copyText(el) {
 // Reference data
 const refData = [
   { icon: '◎', name: 'Lens & Optics', color: 'var(--cyan)', desc: 'Controls how the image is optically rendered', params: [
-    { name: 'Focal Length', values: [['14mm','Ultra-wide, extreme distortion, dramatic interiors'],['18mm','Wide, environmental, slight barrel distortion'],['24mm','Wide standard, documentary, landscapes'],['28mm','Street photography classic, Kubrick favorite'],['35mm','Natural perspective, closest to human eye'],['50mm','Normal lens, clean neutral look'],['58mm','Portrait-adjacent, dreamy rendering (Noctilux)'],['85mm','Portrait telephoto, flattering compression'],['100mm','Tight portrait, strong background compression'],['135mm+','Extreme compression, voyeuristic feel, paparazzi']]},
+    { name: 'Focal Length', values: [['8mm','Fisheye, 180° barrel distortion, skate/music video'],['14mm','Ultra-wide, extreme distortion, dramatic interiors'],['18mm','Wide, environmental, slight barrel distortion'],['24mm','Wide standard, documentary, landscapes'],['28mm','Street photography classic, Kubrick favorite'],['35mm','Natural perspective, closest to human eye'],['50mm','Normal lens, clean neutral look'],['58mm','Portrait-adjacent, dreamy rendering (Noctilux)'],['85mm','Portrait telephoto, flattering compression'],['100mm','Tight portrait, strong background compression'],['135mm+','Extreme compression, voyeuristic feel, paparazzi']]},
     { name: 'Lens Type', values: [['anamorphic','Oval bokeh, horizontal flare, widescreen look'],['spherical','Standard round bokeh, neutral rendering'],['vintage / uncoated','Lower contrast, warm flares, organic'],['tilt-shift','Selective focus plane, miniature effect'],['macro','Extreme close-up capability, razor-thin DOF'],['fisheye','180° barrel distortion, skate/music video']]},
     { name: 'Depth of Field', values: [['shallow DOF','f/1.2–2.8, subject isolated, creamy blur'],['moderate DOF','f/4–5.6, subject sharp with soft context'],['deep DOF','f/8–11, most of scene sharp'],['infinite DOF','f/16+, everything tack sharp, landscape'],['split diopter','Two focal planes sharp simultaneously, De Palma']]},
     { name: 'Bokeh & Flare', values: [['oval bokeh','Anamorphic signature, elliptical highlights'],['circular bokeh','Spherical lens, round specular highlights'],['cat-eye bokeh','Swirly edge distortion, vintage lenses'],['horizontal lens flare','Anamorphic streak across frame'],['starburst flare','Stopped-down aperture, pointed rays']]}
