@@ -802,28 +802,28 @@
     <div class="section-desc">Same scene — only the camera stabilization changes. This defines the physical "feel" of the footage. 🎥 Video clips.</div>
     <div class="image-grid grid-4">
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="7A_Stabilization/A_tripod_static.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
+        <video data-src="7A_Stabilization/A_tripod_static.mp4" muted playsinline loop preload="none" poster="7A_Stabilization/posters/A_tripod_static.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Locked Off / Tripod</div>
           <div class="card-desc">Perfectly static, zero movement, controlled</div>
         </div>
       </div>
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="7A_Stabilization/B_handheld.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
+        <video data-src="7A_Stabilization/B_handheld.mp4" muted playsinline loop preload="none" poster="7A_Stabilization/posters/B_handheld.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Handheld</div>
           <div class="card-desc">Organic shake, urgency, documentary</div>
         </div>
       </div>
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="7A_Stabilization/C_steadicam.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
+        <video data-src="7A_Stabilization/C_steadicam.mp4" muted playsinline loop preload="none" poster="7A_Stabilization/posters/C_steadicam.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Steadicam</div>
           <div class="card-desc">Smooth floating glide, Kubrick hallways</div>
         </div>
       </div>
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="7A_Stabilization/D_gimbal.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
+        <video data-src="7A_Stabilization/D_gimbal.mp4" muted playsinline loop preload="none" poster="7A_Stabilization/posters/D_gimbal.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Gimbal Stabilized</div>
           <div class="card-desc">Ultra-smooth modern, YouTube/commercial</div>
@@ -841,49 +841,49 @@
     <div class="section-desc">Same subject — only the camera's movement direction changes. This is the core of video cinematography. 🎥 Video clips.</div>
     <div class="image-grid grid-4" id="grid-movement-direction">
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="7B_Movement_Direction/A_dolly_in.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
+        <video data-src="7B_Movement_Direction/A_dolly_in.mp4" muted playsinline loop preload="none" poster="7B_Movement_Direction/posters/A_dolly_in.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Push In / Dolly In</div>
           <div class="card-desc">Moving toward subject, increasing intimacy</div>
         </div>
       </div>
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="7B_Movement_Direction/B_dolly_out.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
+        <video data-src="7B_Movement_Direction/B_dolly_out.mp4" muted playsinline loop preload="none" poster="7B_Movement_Direction/posters/B_dolly_out.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Pull Out / Dolly Out</div>
           <div class="card-desc">Moving away, revealing context</div>
         </div>
       </div>
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="7B_Movement_Direction/C_tracking_lateral.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
+        <video data-src="7B_Movement_Direction/C_tracking_lateral.mp4" muted playsinline loop preload="none" poster="7B_Movement_Direction/posters/C_tracking_lateral.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Tracking Left/Right</div>
           <div class="card-desc">Lateral following movement</div>
         </div>
       </div>
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="7B_Movement_Direction/D_tracking_backward.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
+        <video data-src="7B_Movement_Direction/D_tracking_backward.mp4" muted playsinline loop preload="none" poster="7B_Movement_Direction/posters/D_tracking_backward.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Tracking Backward</div>
           <div class="card-desc">Subject walks toward camera, hero walk</div>
         </div>
       </div>
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="7B_Movement_Direction/E_crane_up.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
+        <video data-src="7B_Movement_Direction/E_crane_up.mp4" muted playsinline loop preload="none" poster="7B_Movement_Direction/posters/E_crane_up.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Crane Up</div>
           <div class="card-desc">Rising vertical, reveal or triumph</div>
         </div>
       </div>
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="7B_Movement_Direction/F_orbit.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
+        <video data-src="7B_Movement_Direction/F_orbit.mp4" muted playsinline loop preload="none" poster="7B_Movement_Direction/posters/F_orbit.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Orbit / Arc</div>
           <div class="card-desc">Circling around subject, dramatic</div>
         </div>
       </div>
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="7B_Movement_Direction/G_whip_pan.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
+        <video data-src="7B_Movement_Direction/G_whip_pan.mp4" muted playsinline loop preload="none" poster="7B_Movement_Direction/posters/G_whip_pan.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Whip Pan</div>
           <div class="card-desc">Fast horizontal blur transition</div>
@@ -901,21 +901,21 @@
     <div class="section-desc">Same movement direction — only the speed changes. Slow = tension. Fast = shock. 🎥 Video clips.</div>
     <div class="image-grid grid-3">
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="7C_Speed/A_slow_creep.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
+        <video data-src="7C_Speed/A_slow_creep.mp4" muted playsinline loop preload="none" poster="7C_Speed/posters/A_slow_creep.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Slow Creep</div>
           <div class="card-desc">Barely perceptible, tension building</div>
         </div>
       </div>
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="7C_Speed/B_steady_pace.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
+        <video data-src="7C_Speed/B_steady_pace.mp4" muted playsinline loop preload="none" poster="7C_Speed/posters/B_steady_pace.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Steady Pace</div>
           <div class="card-desc">Matching subject walk speed</div>
         </div>
       </div>
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="7C_Speed/C_crash_zoom.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
+        <video data-src="7C_Speed/C_crash_zoom.mp4" muted playsinline loop preload="none" poster="7C_Speed/posters/C_crash_zoom.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Crash Zoom / Snap</div>
           <div class="card-desc">Sudden violent movement, shock</div>
@@ -933,42 +933,42 @@
     <div class="section-desc">Same character, same environment — only what the subject does changes. This is the other half of video prompting. 🎥 Video clips.</div>
     <div class="image-grid grid-3">
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="8A_Character_Action/A_standing_still.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
+        <video data-src="8A_Character_Action/A_standing_still.mp4" muted playsinline loop preload="none" poster="8A_Character_Action/posters/A_standing_still.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Standing Still</div>
           <div class="card-desc">Minimal motion, breathing, portrait feel</div>
         </div>
       </div>
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="8A_Character_Action/B_walking_toward.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
+        <video data-src="8A_Character_Action/B_walking_toward.mp4" muted playsinline loop preload="none" poster="8A_Character_Action/posters/B_walking_toward.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Walking Toward Camera</div>
           <div class="card-desc">Confident approach, power, presence</div>
         </div>
       </div>
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="8A_Character_Action/C_walking_away.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
+        <video data-src="8A_Character_Action/C_walking_away.mp4" muted playsinline loop preload="none" poster="8A_Character_Action/posters/C_walking_away.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Walking Away</div>
           <div class="card-desc">Departure, mystery, leaving behind</div>
         </div>
       </div>
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="8A_Character_Action/D_turning_head.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
+        <video data-src="8A_Character_Action/D_turning_head.mp4" muted playsinline loop preload="none" poster="8A_Character_Action/posters/D_turning_head.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Turning Head</div>
           <div class="card-desc">Dramatic reveal, awareness, slow turn</div>
         </div>
       </div>
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="8A_Character_Action/E_running.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
+        <video data-src="8A_Character_Action/E_running.mp4" muted playsinline loop preload="none" poster="8A_Character_Action/posters/E_running.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Running</div>
           <div class="card-desc">Urgency, chase, action energy</div>
         </div>
       </div>
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="8A_Character_Action/F_sitting_gestures.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
+        <video data-src="8A_Character_Action/F_sitting_gestures.mp4" muted playsinline loop preload="none" poster="8A_Character_Action/posters/F_sitting_gestures.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Sitting, Subtle Gestures</div>
           <div class="card-desc">Calm, contemplative, intimate</div>
@@ -986,28 +986,28 @@
     <div class="section-desc">Same subject standing still — only the environment moves. Adds atmosphere and life to otherwise static shots. 🎥 Video clips.</div>
     <div class="image-grid grid-4">
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="8B_Environmental_Motion/A_rain.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
+        <video data-src="8B_Environmental_Motion/A_rain.mp4" muted playsinline loop preload="none" poster="8B_Environmental_Motion/posters/A_rain.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Rain Falling</div>
           <div class="card-desc">Atmosphere, noir, melancholy, wet reflections</div>
         </div>
       </div>
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="8B_Environmental_Motion/B_wind.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
+        <video data-src="8B_Environmental_Motion/B_wind.mp4" muted playsinline loop preload="none" poster="8B_Environmental_Motion/posters/B_wind.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Wind Blowing</div>
           <div class="card-desc">Dynamic, outdoor energy, hair/clothes movement</div>
         </div>
       </div>
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="8B_Environmental_Motion/C_crowd.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
+        <video data-src="8B_Environmental_Motion/C_crowd.mp4" muted playsinline loop preload="none" poster="8B_Environmental_Motion/posters/C_crowd.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Crowd Moving</div>
           <div class="card-desc">Isolation in crowd, urban life, loneliness</div>
         </div>
       </div>
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="8B_Environmental_Motion/D_neon_flicker.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
+        <video data-src="8B_Environmental_Motion/D_neon_flicker.mp4" muted playsinline loop preload="none" poster="8B_Environmental_Motion/posters/D_neon_flicker.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Neon Flickering</div>
           <div class="card-desc">Colored light pulsing on face, cyberpunk</div>
@@ -1025,21 +1025,21 @@
     <div class="section-desc">How to connect two shots in a single prompt using "Shot 1" and "Shot 2" structure. Each transition type changes the emotional feel between scenes. 🎥 Video clips.</div>
     <div class="image-grid grid-3">
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="9_Transitions/A_hard_cut.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
+        <video data-src="9_Transitions/A_hard_cut.mp4" muted playsinline loop preload="none" poster="9_Transitions/posters/A_hard_cut.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Hard Cut</div>
           <div class="card-desc">Instant sharp scene change, no blending</div>
         </div>
       </div>
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="9_Transitions/B_dissolve_crossfade.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
+        <video data-src="9_Transitions/B_dissolve_crossfade.mp4" muted playsinline loop preload="none" poster="9_Transitions/posters/B_dissolve_crossfade.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Dissolve / Crossfade</div>
           <div class="card-desc">Soft blend between two scenes, dreamy</div>
         </div>
       </div>
       <div class="image-card" onclick="openLightbox(this)">
-        <video src="9_Transitions/C_whip_pan_transition.mp4" muted playsinline loop style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
+        <video data-src="9_Transitions/C_whip_pan_transition.mp4" muted playsinline loop preload="none" poster="9_Transitions/posters/C_whip_pan_transition.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer" onmouseenter="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}this.play()" onmouseleave="this.pause();this.currentTime=0" onclick="event.stopPropagation();this.paused?this.play():this.pause()"></video>
         <div class="card-info">
           <div class="card-title">Whip Pan Transition</div>
           <div class="card-desc">Fast blur connecting two different locations</div>
@@ -1107,7 +1107,7 @@ function openLightbox(card) {
   if (video) {
     lbImg.style.display = 'none';
     lbVid.style.display = 'block';
-    lbVid.src = video.src;
+    lbVid.src = video.dataset.src || video.src;
     lbVid.play();
   } else if (img) {
     lbVid.style.display = 'none';
@@ -1221,6 +1221,25 @@ function filterRef(q) {
 }
 
 renderRef();
+
+// Lazy load videos - only load when scrolled into view
+if ('IntersectionObserver' in window) {
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const video = entry.target;
+        if (video.dataset.src) {
+          video.src = video.dataset.src;
+          video.removeAttribute('data-src');
+        }
+        videoObserver.unobserve(video);
+      }
+    });
+  }, { rootMargin: '200px' });
+  
+  document.querySelectorAll('video[data-src]').forEach(v => videoObserver.observe(v));
+}
+
 </script>
 </body>
 </html>
